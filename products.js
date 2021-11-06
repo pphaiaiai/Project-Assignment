@@ -25,6 +25,9 @@ export class Product {
     get image() {
         return this._image;
     }
+    decreaseAmountProduct() {
+        this._remainingAmount--;
+    }
 }
 
 export const products = [

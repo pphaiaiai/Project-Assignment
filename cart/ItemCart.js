@@ -1,5 +1,3 @@
-import { Product } from "../products.js";
-
 export class ProductInCart {
     constructor(product) {
         this._product = product;

@@ -1,7 +1,7 @@
 import { products } from "../products.js";
 import { cart, ProductInCart } from "./ItemCart.js";
-
-// const productList = document.querySelectorAll('.product');
+import { showAllProduct } from "../script.js";
+import { productToSearch, input } from "../search/search.js";
 
 export function addButton() {
     const productList = document.querySelectorAll('.product');
@@ -23,6 +23,10 @@ function addProduct(event) {
     let findProduct = products.find((item) => {
         return item.productId == event.target.parentElement.querySelectorAll('.productId')[0].textContent;
     })
+    if (findProduct.remainingAmount <= 0) {
+        return alert(`Product ID: ${findProduct._productId} Out of Stock`);
+    }
+    findProduct.decreaseAmountProduct();
     alert(`${findProduct.productId} Added in your Cart`)
     if (cart.some((prod) => { return findProduct.productId == prod.product.productId })) {
         cart.find((prod) => { return findProduct.productId == prod.product.productId }).addMore();
@@ -31,4 +35,9 @@ function addProduct(event) {
     }
     document.querySelectorAll('.fa-shopping-cart')[0].childNodes[0].textContent = cart.length;
 
+    const input = document.querySelectorAll('.search')[0].querySelectorAll('.form-control')[0];
+
+
+    let productToShow = productToSearch(input.value);
+    showAllProduct(productToShow);
 }
