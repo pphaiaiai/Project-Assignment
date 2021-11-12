@@ -1,26 +1,10 @@
-import { products } from "./products.js";
-import { addButton } from "./cart/itemCart.js";
-
-const productList = document.getElementById('productList');
-
-
-const searchBar = document.getElementById('search-bar');
-
-searchBar.addEventListener('input', () => {
-    const keyword = searchBar.value.toLowerCase();
-    const filterProducts = filterProduct(keyword);
-    showAllProduct(filterProducts);
-});
-
-export function filterProduct(keyword) {
-    return products.filter(product => {
-        return product.productId.toLowerCase().includes(keyword) ||
-            product.productName.toLowerCase().includes(keyword)
-    });
-}
-
+import { products } from "./Products.js";
+import { addButton } from "./cart/cartMain.js";
+import { addHideButtonEvent, addSearchBar } from "./search/search.js";
 
 showAllProduct(products);
+addSearchBar();
+addHideButtonEvent();
 
 export function showAllProduct(productToShow) {
     const productList = document.getElementById('productList');
@@ -63,35 +47,22 @@ export function showAllProduct(productToShow) {
     addButton();
 }
 
-function myFunction() {
+//สร้างมาทำไม?
+// function myFunction() {
 
-    var input, filter, ul, li, a, i, txtValue;
-    input = document.getElementById('myInput');
-    filter = input.value.toUpperCase();
-    ul = document.getElementById("myUL");
-    li = ul.getElementsByTagName('li');
+//     var input, filter, ul, li, a, i, txtValue;
+//     input = document.getElementById('myInput');
+//     filter = input.value.toUpperCase();
+//     ul = document.getElementById("myUL");
+//     li = ul.getElementsByTagName('li');
 
-    for (i = 0; i < li.length; i++) {
-        a = li[i].getElementsByTagName("a")[0];
-        txtValue = a.textContent || a.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            li[i].style.display = "";
-        } else {
-            li[i].style.display = "none";
-        }
-    }
-}
-
-function hidesearch() {
-    const searchbar = document.getElementById('search');
-    if (searchbar.style.display === "flex") {
-        searchbar.style.display = "none";
-    } else {
-        searchbar.style.display = "flex";
-    }
-}
-
-const hide = document.getElementById('hidebutton');
-hide.addEventListener("click", () => {
-    hidesearch()
-});
+//     for (i = 0; i < li.length; i++) {
+//         a = li[i].getElementsByTagName("a")[0];
+//         txtValue = a.textContent || a.innerText;
+//         if (txtValue.toUpperCase().indexOf(filter) > -1) {
+//             li[i].style.display = "";
+//         } else {
+//             li[i].style.display = "none";
+//         }
+//     }
+// }
