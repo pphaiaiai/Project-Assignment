@@ -10,13 +10,14 @@ html {
     padding: 0;
     margin: 0;
     letter-spacing: 1.1px;
+    color: var(--fontColor);
 }
 
 body,
 html {
     width: 100%;
     height: 100%;
-    background: rgb(15, 15, 15);
+    background: var(--mainBg);
     font-family: "Varela Round", sans-serif;
 }
 
@@ -33,13 +34,12 @@ html {
 .menu li {
     width: 125px;
     height: 50px;
-    transition: background-position-x 0.9s linear;
+    transition: background-position-x 0.2s linear;
     text-align: center;
 }
 
 .menu li a {
     font-size: 22px;
-    color: rgb(230, 230, 230);
     text-decoration: none;
     transition: all 0.45s;
 }
@@ -51,7 +51,7 @@ html {
 }
 
 .menu li:hover a {
-    color: #FD7014;
+    color: #fd1414;
 }
 
 .menu li:not(:last-child) {
@@ -69,23 +69,37 @@ html {
         background-position-x: 390px;
     }
 }
+
 .text-white {
-    color: #EEEEEE !important;
+    color: var(--fontColor);
 }
-img, svg {
+
+img,
+svg {
     vertical-align: middle;
     border-radius: 7px;
 }
+
 .card {
     width: 21rem;
     padding: 0;
     margin: 0;
     border-radius: 7px;
     box-shadow: 5px;
+    background: var(--mainBg);
 }
-.bg-dark{
-    background-color: #151515!important;
+
+.btn-dark {
+    color: #fff;
+    background: var(--mainBg);
+    border-color: var(--mainBg);
+    color: var(--fontColor);
 }
+
+.bg-dark {
+    background: var(--mainBg);
+}
+
 #search {
     position: relative;
     width: 100%;
@@ -94,18 +108,33 @@ img, svg {
 .search input {
     height: 60px;
     text-indent: 40px;
-    border: 2px solid #ffffff
+    border: 2px;
 }
 
 .search input:focus {
     box-shadow: none;
-    border: 2px solid rgb(218, 218, 218)
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 0.375 rem 0.75 rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--fontColor);
+    background: var(--mainBg);
+    background-clip: padding-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.25 rem;
 }
 
 .search .fa-search {
     position: absolute;
     top: 20px;
-    left: 16px
+    left: 16px;
 }
 
 .search button {
@@ -114,10 +143,109 @@ img, svg {
     right: 5px;
     height: 50px;
     width: 110px;
-    background: rgb(255, 255, 255)
+    background: var(--mainBg);
 }
 
-button{
-    border-radius: 7px;
-    background-color: #ffffff;
+button,
+input,
+optgroup,
+select,
+textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    background: var(--mainBg);
+}
+
+:root {
+    --navHeight: 70px;
+    --sage: #d2cca1;
+    --paleSpringBud: #dedaba;
+    --goldCrayola: #e5c687;
+    --richBlackForeground: #0f1a20;
+    --white: #f8f8f8;
+    --black: #222;
+    --msuGreen: #363636;
+    --gray: #eee;
+}
+
+* {
+    color: var(--fontColor);
+    transition: background-color 0s ease, color 0s ease;
+}
+
+.switch {
+    width: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.switch div {
+    position: relative;
+    display: block;
+    background: #eee;
+    width: 30px;
+    border-radius: 50px;
+    padding: 0 5px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.fa-adjust {
+    transform: rotate(180deg);
+}
+
+.switch input {
+    display: none;
+}
+
+input:checked+.slider {
+    transform: translateX(8px);
+}
+
+.light-theme {
+    --themeDropDownBg: var(--goldCrayola);
+    --themeIconBorderColor: var(--sage);
+    --navBg: var(--sage);
+    --navLinkHoverBg: var(--paleSpringBud);
+    --mainBg: var(--goldCrayola);
+    --fontColor: var(--black);
+}
+
+.dark-theme {
+    --themeDropDownBg: var(--msuGreen);
+    --themeIconBorderColor: var(--richBlackForeground);
+    --navBg: var(--richBlackForeground);
+    --navLinkHoverBg: var(--msuGreen);
+    --mainBg: var(--msuGreen);
+    --fontColor: var(--white);
+}
+
+.slider {
+    background-color: #999;
+    transition: 0.4s;
+    border-radius: 34px;
+    height: 12px;
+    width: 12px;
+    display: inline-block;
+    position: relative;
+}
+
+a {
+    color: var(--fontColor);
+    text-decoration: underline;
+}
+
+* {
+    color: var(--fontColor);
+}
+
+nav ul li:hover {
+    background-color: var(--navLinkHoverBg);
+}
+
+main {
+    background: var(--mainBg);
 }

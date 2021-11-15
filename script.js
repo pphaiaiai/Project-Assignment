@@ -1,10 +1,13 @@
 import { products } from "./Products.js";
 import { addButton } from "./cart/cartMain.js";
 import { addHideButtonEvent, addSearchBar } from "./search/search.js";
+import { addThemeSwitch, loadTheme } from "./theme/theme.js";
 
 showAllProduct(products);
 addSearchBar();
 addHideButtonEvent();
+addThemeSwitch();
+loadTheme();
 
 export function showAllProduct(productToShow) {
     const productList = document.getElementById('productList');

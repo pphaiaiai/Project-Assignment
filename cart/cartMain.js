@@ -3,8 +3,10 @@ import { ProductInCart } from "./ItemCart.js";
 import { products } from "../Products.js";
 import { showAllProduct } from "../script.js";
 import { filterProduct } from "../search/search.js";
+import { loadCart } from "../storage/localStorageManager.js";
 
-const cart = new Cart();
+const cart = new Cart(loadCart());
+updateBadgeCart();
 
 export function addButton() {
     const productList = document.querySelectorAll('.product');
@@ -24,6 +26,7 @@ function addProduct(event) {
     if (findProduct.remainingAmount <= 0) { return alert('out of stock'); }
     findProduct.decreaseAmount();
     alert(`${findProduct.productId} Added to your Cart`);
+
     if (cart.some(findProduct)) {
         cart.addQuantity(findProduct);
     } else {
@@ -34,5 +37,9 @@ function addProduct(event) {
     const keyword = document.getElementById('search-bar').value.toLowerCase();
     showAllProduct(filterProduct(keyword));
 
+    updateBadgeCart();
+}
+
+function updateBadgeCart() {
     document.querySelectorAll('.badge')[0].textContent = cart.items.length;
 }

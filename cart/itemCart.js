@@ -1,8 +1,8 @@
 //ของในรถเข็น
 export class ProductInCart {
-    constructor(product) {
+    constructor(product, qty = 1) {
         this._product = product;
-        this._qty = 1;
+        this._qty = qty;
     }
 
     addMore() {
