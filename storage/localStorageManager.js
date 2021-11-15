@@ -3,6 +3,18 @@ import { ProductInCart } from "../cart/ItemCart.js";
 import { products } from "../Products.js";
 // import { localStorage } from "./storage.js";
 
+export function saveItem(name, value) {
+    localStorage.setItem(name, JSON.stringify(value));
+}
+
+export function loadItem(name) {
+    return JSON.parse(localStorage.getItem(name));
+}
+
+export function saveCart(cart) {
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+
 export function loadCart() {
     let loadedCart = JSON.parse(localStorage.getItem('cart'));
     console.log(loadedCart);
@@ -15,8 +27,4 @@ export function loadCart() {
     });
 
     return cart;
-}
-
-export function saveCart(cart) {
-    localStorage.setItem('cart', JSON.stringify(cart));
 }

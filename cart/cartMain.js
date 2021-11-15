@@ -3,10 +3,13 @@ import { ProductInCart } from "./ItemCart.js";
 import { products } from "../Products.js";
 import { showAllProduct } from "../script.js";
 import { filterProduct } from "../search/search.js";
-import { loadCart } from "../storage/localStorageManager.js";
+import { loadCart, saveItem } from "../storage/localStorageManager.js";
 
-const cart = new Cart(loadCart());
+
+export const cart = new Cart(loadCart());
 updateBadgeCart();
+
+console.log(products);
 
 export function addButton() {
     const productList = document.querySelectorAll('.product');
@@ -33,13 +36,27 @@ function addProduct(event) {
         cart.add(new ProductInCart(findProduct));
     }
     console.log(cart);
+    console.log(findProduct.remainingAmount);
 
     const keyword = document.getElementById('search-bar').value.toLowerCase();
     showAllProduct(filterProduct(keyword));
-
     updateBadgeCart();
+
+    let stock = [];
+    products.forEach((val) => {
+        stock.push(getProductQtyObject(val));
+    })
+
+    saveItem('Stock', stock);
 }
 
 function updateBadgeCart() {
     document.querySelectorAll('.badge')[0].textContent = cart.items.length;
+}
+
+function getProductQtyObject(product) {
+    return {
+        'productId': product.productId,
+        'remainingAmount': product.remainingAmount
+    };
 }
