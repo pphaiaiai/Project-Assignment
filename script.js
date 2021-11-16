@@ -1,9 +1,10 @@
 import { loadStock, products } from "./Products.js";
-import { addButton } from "./cart/cartMain.js";
+import { addButton, initialCart } from "./cart/cartMain.js";
 import { addHideButtonEvent, addSearchBar } from "./search/search.js";
 import { addThemeSwitch, loadTheme } from "./theme/theme.js";
 
 loadStock();
+initialCart();
 showAllProduct(products);
 addSearchBar();
 addHideButtonEvent();

@@ -57,3 +57,9 @@ export function loadStock() {
     );
 
 }
+
+export function findProduct(productId) {
+    return products.find(product => {
+        return product.productId == productId
+    });
+}

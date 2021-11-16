@@ -18,13 +18,12 @@ export class Cart {
         saveCart(this._items);
     }
 
+    load() {
+        this._items = loadCart();
+    }
 
     some(item) {
-        console.log(this._items);
         return this._items.some((prod) => {
-            // console.log(prod.product.productId);
-            console.log(prod);
-            // console.log(item.productId);
             return item.productId == prod.product.productId;
         })
     }

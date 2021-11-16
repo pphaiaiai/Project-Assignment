@@ -6,10 +6,12 @@ import { filterProduct } from "../search/search.js";
 import { loadCart, saveItem } from "../storage/localStorageManager.js";
 
 
-export const cart = new Cart(loadCart());
-updateBadgeCart();
+export const cart = new Cart();
 
-console.log(products);
+export function initialCart() {
+    cart.load();
+    updateBadgeCart();
+}
 
 export function addButton() {
     const productList = document.querySelectorAll('.product');
@@ -26,6 +28,7 @@ function addProduct(event) {
     let findProduct = products.find((items) => {
         return items.productId == event.target.parentElement.querySelectorAll('.productId')[0].textContent;
     });
+
     if (findProduct.remainingAmount <= 0) { return alert('out of stock'); }
     findProduct.decreaseAmount();
     alert(`${findProduct.productId} Added to your Cart`);
@@ -35,8 +38,6 @@ function addProduct(event) {
     } else {
         cart.add(new ProductInCart(findProduct));
     }
-    console.log(cart);
-    console.log(findProduct.remainingAmount);
 
     const keyword = document.getElementById('search-bar').value.toLowerCase();
     showAllProduct(filterProduct(keyword));
@@ -48,6 +49,7 @@ function addProduct(event) {
     })
 
     saveItem('Stock', stock);
+
 }
 
 function updateBadgeCart() {
