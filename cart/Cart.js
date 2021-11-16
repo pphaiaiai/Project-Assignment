@@ -9,7 +9,6 @@ export class Cart {
     }
     add(item) {
         this._items.push(item);
-        this.save();
     }
     remove(item) {
         this._items = this._items.filter((val) => val != item);

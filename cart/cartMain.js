@@ -29,6 +29,7 @@ function addProduct(event) {
         return items.productId == event.target.parentElement.querySelectorAll('.productId')[0].textContent;
     });
 
+
     if (findProduct.remainingAmount <= 0) { return alert('out of stock'); }
     findProduct.decreaseAmount();
     alert(`${findProduct.productId} Added to your Cart`);
@@ -38,6 +39,8 @@ function addProduct(event) {
     } else {
         cart.add(new ProductInCart(findProduct));
     }
+
+    cart.save();
 
     const keyword = document.getElementById('search-bar').value.toLowerCase();
     showAllProduct(filterProduct(keyword));
