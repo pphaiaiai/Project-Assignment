@@ -1,15 +1,5 @@
-import { loadStock, products } from "./Products.js";
-import { addButton, initialCart } from "./cart/cartMain.js";
-import { addHideButtonEvent, addSearchBar } from "./search/search.js";
-import { addThemeSwitch, loadTheme } from "./theme/theme.js";
+import { addButton } from "../cart/cartMain.js";
 
-loadStock();
-initialCart();
-showAllProduct(products);
-addSearchBar();
-addHideButtonEvent();
-addThemeSwitch();
-loadTheme();
 
 export function showAllProduct(productToShow) {
     const productList = document.getElementById('productList');
@@ -28,7 +18,6 @@ export function showAllProduct(productToShow) {
         const productName = document.createElement('p');
         const price = document.createElement('p');
         const remainingAmount = document.createElement('p');
-        const addButton = document.createElement('button');
 
         image.setAttribute('src', value.image);
         idId.classList.add('productId');
@@ -51,23 +40,3 @@ export function showAllProduct(productToShow) {
     });
     addButton();
 }
-
-//สร้างมาทำไม?
-// function myFunction() {
-
-//     var input, filter, ul, li, a, i, txtValue;
-//     input = document.getElementById('myInput');
-//     filter = input.value.toUpperCase();
-//     ul = document.getElementById("myUL");
-//     li = ul.getElementsByTagName('li');
-
-//     for (i = 0; i < li.length; i++) {
-//         a = li[i].getElementsByTagName("a")[0];
-//         txtValue = a.textContent || a.innerText;
-//         if (txtValue.toUpperCase().indexOf(filter) > -1) {
-//             li[i].style.display = "";
-//         } else {
-//             li[i].style.display = "none";
-//         }
-//     }
-// }

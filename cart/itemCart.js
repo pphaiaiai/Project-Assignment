@@ -15,4 +15,5 @@ export class ProductInCart {
     get product() {
         return this._product;
     }
+
 }

@@ -1,16 +1,14 @@
-import { Cart } from "./Cart.js";
+import { cart } from "./Cart.js";
 import { ProductInCart } from "./ItemCart.js";
-import { products } from "../Products.js";
-import { showAllProduct } from "../script.js";
+import { products } from "../main/products.js";
+import { showAllProduct } from "../main/script.js";
 import { filterProduct } from "../search/search.js";
-import { loadCart, saveItem } from "../storage/localStorageManager.js";
+import { saveItem } from "../storage/localStorageManager.js";
 
-
-export const cart = new Cart();
 
 export function initialCart() {
     cart.load();
-    updateBadgeCart();
+    updateBadgeCart(cart);
 }
 
 export function addButton() {
@@ -44,7 +42,7 @@ function addProduct(event) {
 
     const keyword = document.getElementById('search-bar').value.toLowerCase();
     showAllProduct(filterProduct(keyword));
-    updateBadgeCart();
+    updateBadgeCart(cart);
 
     let stock = [];
     products.forEach((val) => {
@@ -55,11 +53,12 @@ function addProduct(event) {
 
 }
 
-function updateBadgeCart() {
+export function updateBadgeCart(cart) {
+    console.log(cart);
     document.querySelectorAll('.badge')[0].textContent = cart.items.length;
 }
 
-function getProductQtyObject(product) {
+export function getProductQtyObject(product) {
     return {
         'productId': product.productId,
         'remainingAmount': product.remainingAmount

@@ -15,6 +15,7 @@ export function addThemeSwitch() {
 }
 
 export function loadTheme() {
+
     if (getCookie("darkmode")) {
         document.body.classList.toggle('dark-theme');
     }

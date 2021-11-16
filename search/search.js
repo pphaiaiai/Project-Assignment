@@ -1,5 +1,5 @@
-import { products } from "../Products.js";
-import { showAllProduct } from "../script.js";
+import { products } from "../main/products.js";
+import { showAllProduct } from "../main/script.js";
 
 export function addSearchBar() {
     const searchBar = document.getElementById('search-bar');
