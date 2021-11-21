@@ -13,9 +13,17 @@ export function loadItem(name) {
 export function saveCart(cart) {
     console.log(`save${cart}`);
     console.log(cart);
-    console.log(cart.length);
     if (cart.length == 0) { return localStorage.removeItem('cart'); }
-    localStorage.setItem('cart', JSON.stringify(cart));
+
+    const mapCart = cart.map((val) => {
+        return {
+            'productId': val.product.productId,
+            'qty': val.qty
+        };
+    });
+    console.log(mapCart);
+
+    localStorage.setItem('cart', JSON.stringify(mapCart));
 }
 
 export function loadCart() {
@@ -23,11 +31,9 @@ export function loadCart() {
     let loadedCart = JSON.parse(localStorage.getItem('cart'));
     if (loadedCart == null || loadedCart == undefined || loadedCart == []) return [];
     let cart = [];
-    console.log(loadedCart[0]);
-    console.log(loadedCart[0]._product);
     console.log(typeof(loadedCart));
     loadedCart.forEach((val) => {
-        cart.push(new ProductInCart(findProduct(val._product._productId), val._qty));
+        cart.push(new ProductInCart(findProduct(val.productId), val.qty));
     });
     console.log(cart);
     return cart;

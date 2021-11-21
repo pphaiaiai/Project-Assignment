@@ -12,6 +12,7 @@ loadStock();
 initialCart();
 addThemeSwitch();
 loadTheme();
+clearCart();
 
 const loadedCart = new Cart(loadCart());
 
@@ -55,7 +56,6 @@ function showCart() {
 
         productListInCart.appendChild(product);
 
-
     });
 }
 
@@ -76,4 +76,18 @@ function removeProductInCart(event) {
 
     showCart();
     updateBadgeCart(loadedCart);
+}
+
+export function clearCart() {
+    const clearAllCart = document.getElementById('clearCart')
+    console.log(clearAllCart);
+    clearAllCart.addEventListener('click', () => {
+        alert("Clear cart!")
+        localStorage.removeItem('cart');
+        localStorage.removeItem('Stock');
+        showCart();
+        updateBadgeCart(loadedCart);
+        window.location.assign('/');
+    });
+
 }

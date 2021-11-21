@@ -5,7 +5,6 @@ import { addThemeSwitch, loadTheme } from "../theme/theme.js";
 import { showAllProduct } from "./script.js";
 
 
-
 loadStock();
 initialCart();
 showAllProduct(products)

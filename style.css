@@ -249,3 +249,7 @@ nav ul li:hover {
 main {
     background: var(--mainBg);
 }
+
+.trash {
+    margin-left: 20px;
+}

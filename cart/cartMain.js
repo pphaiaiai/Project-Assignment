@@ -13,7 +13,7 @@ export function addButton() {
     const productList = document.querySelectorAll('.product');
     productList.forEach((val) => {
         const button = document.createElement('button') //<button></button>
-
+        button.id = val.querySelectorAll('.productId')[0].textContent;
         button.textContent = `Add to cart`
         button.addEventListener('click', addProduct);
         val.appendChild(button);
@@ -23,7 +23,7 @@ export function addButton() {
 
 function addProduct(event) {
     let findProduct = products.find((items) => {
-        return items.productId == event.target.parentElement.querySelectorAll('.productId')[0].textContent;
+        return items.productId == event.target.id;
     });
 
 
