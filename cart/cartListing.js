@@ -16,7 +16,7 @@ clearCart();
 
 const loadedCart = new Cart(loadCart());
 
-console.log(loadCart);
+console.log(loadedCart);
 showCart();
 
 
@@ -63,7 +63,8 @@ function showCart() {
 
 function removeProductInCart(event) {
     let findProductIdInCart = event.target.id;
-    findProduct(findProductIdInCart).remainingAmount += loadedCart.find(findProductIdInCart).qty;
+    const findedProduct = findProduct(findProductIdInCart);
+    findedProduct.remainingAmount += loadedCart.find(findProductIdInCart).qty;
     loadedCart.remove(findProductIdInCart);
     loadedCart.save();
 
@@ -74,10 +75,12 @@ function removeProductInCart(event) {
 
     saveItem('Stock', stock);
 
-    showCart();
+    //แก้จากให้โหลดใหม่โดยสร้าง element ใหม่ทั้งหมดเป็นให้ remove node ตัวนั้นไปแทน
+    event.target.parentElement.remove();
     updateBadgeCart(loadedCart);
 }
 
+// เพิ่ม fuction claer cart เพื่อลบของทั้งหมดในตระกร้าและโหลดกลับไปหา home
 export function clearCart() {
     const clearAllCart = document.getElementById('clearCart')
     console.log(clearAllCart);

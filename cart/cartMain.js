@@ -13,6 +13,7 @@ export function addButton() {
     const productList = document.querySelectorAll('.product');
     productList.forEach((val) => {
         const button = document.createElement('button') //<button></button>
+            //เพิ่ม id ในปุ่ม add to cart
         button.id = val.querySelectorAll('.productId')[0].textContent;
         button.textContent = `Add to cart`
         button.addEventListener('click', addProduct);
@@ -23,6 +24,7 @@ export function addButton() {
 
 function addProduct(event) {
     let findProduct = products.find((items) => {
+        //ให้เขาถึง product id ใน id ของ button
         return items.productId == event.target.id;
     });
 
@@ -39,6 +41,7 @@ function addProduct(event) {
 
     cart.save();
 
+    //เปลี่ยนจากการโหลดทั้งหมดเป็น เปลี่ยนแค่ stock
     event.target.parentElement.childNodes[4].textContent = `Stock: ${findProduct.remainingAmount}`;
 
     updateBadgeCart(cart);

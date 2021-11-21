@@ -1,3 +1,4 @@
+//เปลี่ยนไปใช้ const let แทน var
 export function setCookie(name, value, days) {
     let expires = "";
     if (days) {

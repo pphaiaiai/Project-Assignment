@@ -6,10 +6,12 @@ export function addSearchBar() {
     searchBar.addEventListener('input', () => {
         const keyword = searchBar.value.toLowerCase();
         const filterProducts = filterProduct(keyword);
+        //เรียก filterProductInWeb แทนการเรียก showAllProduct
         filterProductInWeb(filterProducts);
     });
 }
 
+//สร้างมาเพื่อ filter product ใน web โดยใช้ css set เป็น none flex
 function filterProductInWeb(filterProd) {
     const productList = document.querySelectorAll('.product')
         //add d-none
