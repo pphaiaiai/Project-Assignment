@@ -1,7 +1,6 @@
-import { Cart } from "../cart/cart.js";
 import { ProductInCart } from "../cart/ItemCart.js";
-import { findProduct, products } from "../main/products.js";
-// import { localStorage } from "./storage.js";
+import { findProduct } from "../main/products.js";
+
 
 export function saveItem(name, value) {
     localStorage.setItem(name, JSON.stringify(value));

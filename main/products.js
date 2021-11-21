@@ -42,7 +42,7 @@ export const products = []
 
 
 export function loadStock() {
-    let loadedStock = loadItem('Stock');
+    const loadedStock = loadItem('Stock');
     if (loadedStock == null || loadedStock == undefined) {
         return products.push(
             new Product('MS01', 'LOGITECH G PRO X SUPERLIGHT', 4990.00, 20, '/images/mouse.jfif'),

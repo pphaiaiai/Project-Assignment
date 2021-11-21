@@ -1,5 +1,4 @@
 import { products } from "../main/products.js";
-import { showAllProduct } from "../main/script.js";
 
 export function addSearchBar() {
     const searchBar = document.getElementById('search-bar');
@@ -7,10 +6,31 @@ export function addSearchBar() {
     searchBar.addEventListener('input', () => {
         const keyword = searchBar.value.toLowerCase();
         const filterProducts = filterProduct(keyword);
-        showAllProduct(filterProducts);
+        filterProductInWeb(filterProducts);
     });
 }
 
+function filterProductInWeb(filterProd) {
+    const productList = document.querySelectorAll('.product')
+        //add d-none
+    productList.forEach((product) => {
+        product.style.display = 'none';
+    });
+
+    //remove d-none
+    const mapFilterProdToId = [];
+    filterProd.forEach((val) =>
+        mapFilterProdToId.push(val.productId)
+    );
+    console.log(mapFilterProdToId);
+    productList.forEach((product) => {
+        if (mapFilterProdToId.includes(product.querySelectorAll('.productId')[0].textContent)) {
+            product.style.display = 'flex';
+        }
+    });
+}
+
+//return array product จากคลังสินค้า
 export function filterProduct(keyword) {
     return products.filter(product => {
         return product.productId.toLowerCase().includes(keyword) ||

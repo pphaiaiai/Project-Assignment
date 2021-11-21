@@ -37,7 +37,6 @@ function showCart() {
         const cartProductQty = document.createElement('p');
         const button = document.createElement('button');
 
-
         cartProductImage.setAttribute('src', val.product.image);
         cartProductId.textContent = `${val.product.productId}`;
         cartProductName.textContent = `Name: ${val.product.productName}`;
@@ -53,7 +52,6 @@ function showCart() {
         product.appendChild(cartProductPrice);
         product.appendChild(cartProductQty);
         product.appendChild(button)
-
 
         productListInCart.appendChild(product);
 

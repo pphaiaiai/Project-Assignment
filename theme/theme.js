@@ -1,6 +1,6 @@
 import { getCookie, setCookie } from "../storage/cookieManager.js";
 
-export function addThemeSwitch() {
+export function addThemeSwitch() { //เปลี่ยนโหมดการใช้งาน
     const themeSwitch = document.querySelector('#inputCheckBoxTheme');
 
     let darkMode = Boolean(getCookie("darkmode"));
