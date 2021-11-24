@@ -1,5 +1,5 @@
 import { findProduct, loadStock, products } from "../main/products.js";
-import { loadCart, saveItem } from "../storage/localStorageManager.js";
+import { saveItem } from "../storage/localStorageManager.js";
 import { addThemeSwitch, loadTheme } from "../theme/theme.js";
 import { Cart } from "./cart.js";
 import { getProductQtyObject, initialCart, updateBadgeCart } from "./cartMain.js";
@@ -14,7 +14,8 @@ addThemeSwitch();
 loadTheme();
 clearCart();
 
-const loadedCart = new Cart(loadCart());
+const loadedCart = new Cart();
+loadedCart.load();
 
 console.log(loadedCart);
 showCart();

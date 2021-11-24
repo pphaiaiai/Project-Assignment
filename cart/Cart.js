@@ -1,8 +1,9 @@
-import { loadCart, saveCart } from "../storage/localStorageManager.js";
 import { saveItem, loadItem } from "../storage/localStorageManager.js";
+import { ProductInCart } from "./ItemCart.js";
+import { findProduct } from "../main/products.js";
 
 export class Cart {
-    constructor(items) {
+    constructor(items = []) {
         this._items = items;
     }
     get items() {
@@ -15,8 +16,8 @@ export class Cart {
         this._items = this._items.filter((val) => val.product.productId != itemId);
     }
     save() {
-        if (cart.length == 0) { return localStorage.removeItem('cart'); }
-        const mapCart = cart.map((val) => {
+        if (this._items.length == 0) { return localStorage.removeItem('cart'); }
+        const mapCart = this._items.map((val) => {
             return {
                 'productId': val.product.productId,
                 'qty': val.qty
@@ -30,7 +31,7 @@ export class Cart {
         if (loadedCart == null || loadedCart == undefined || loadedCart == []) return [];
         let cartItem = [];
         loadedCart.forEach((val) => {
-            cart.push(new ProductInCart(findProduct(val.productId), val.qty));
+            cartItem.push(new ProductInCart(findProduct(val.productId), val.qty));
         });
         this._items = cartItem;
     }
