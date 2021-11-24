@@ -2,14 +2,12 @@ import { findProduct, loadStock, products } from "../main/products.js";
 import { saveItem } from "../storage/localStorageManager.js";
 import { addThemeSwitch, loadTheme } from "../theme/theme.js";
 import { Cart } from "./cart.js";
-import { getProductQtyObject, initialCart, updateBadgeCart } from "./cartMain.js";
+import { getProductQtyObject, updateBadgeCart } from "./cartMain.js";
 
 
 const productListInCart = document.querySelector('#productList');
 
-
 loadStock();
-initialCart();
 addThemeSwitch();
 loadTheme();
 clearCart();
@@ -19,7 +17,7 @@ loadedCart.load();
 
 console.log(loadedCart);
 showCart();
-
+updateBadgeCart(loadedCart);
 
 
 function showCart() {
@@ -61,7 +59,6 @@ function showCart() {
 }
 
 
-
 function removeProductInCart(event) {
     let findProductIdInCart = event.target.id;
     const findedProduct = findProduct(findProductIdInCart);
@@ -89,8 +86,6 @@ export function clearCart() {
         alert("Clear cart!")
         localStorage.removeItem('cart');
         localStorage.removeItem('Stock');
-        showCart();
-        updateBadgeCart(loadedCart);
         window.location.assign('/');
     });
 

@@ -42,9 +42,7 @@ export function filterProduct(keyword) {
 
 export function addHideButtonEvent() {
     const hide = document.getElementById('hidebutton');
-    hide.addEventListener("click", () => {
-        hidesearch()
-    });
+    hide.addEventListener("click", hidesearch);
 }
 
 function hidesearch() {
