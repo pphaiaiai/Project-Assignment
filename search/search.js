@@ -14,12 +14,12 @@ export function addSearchBar() {
 //สร้างมาเพื่อ filter product ใน web โดยใช้ css set เป็น none flex
 function filterProductInWeb(filterProd) {
     const productList = document.querySelectorAll('.product')
-        //add d-none
+        //display none
     productList.forEach((product) => {
         product.style.display = 'none';
     });
 
-    //remove d-none
+    //display flex
     const mapFilterProdToId = [];
     filterProd.forEach((val) =>
         mapFilterProdToId.push(val.productId)
