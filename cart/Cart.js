@@ -28,7 +28,7 @@ export class Cart {
 
     load() {
         let loadedCart = loadItem('cart');
-        if (loadedCart == null || loadedCart == undefined || loadedCart == []) return [];
+        if (loadedCart == null || loadedCart == undefined || loadedCart == []) return this._items = [];
         let cartItem = [];
         loadedCart.forEach((val) => {
             cartItem.push(new ProductInCart(findProduct(val.productId), val.qty));
