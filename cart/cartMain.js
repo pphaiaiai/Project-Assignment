@@ -45,7 +45,9 @@ function addProduct(event) {
     event.target.parentElement.childNodes[4].textContent = `Stock: ${findProduct.remainingAmount}`;
 
     updateBadgeCart(cart);
-
+    
+    // ที่จริงต้องการเก็บ Stock ไว้บน server เพื่อแสดงสินค้าที่เหลือทุกครั้งที่รีเฟรชเอาไว้ป้องกันเวลาสั่งสินค้าเกิน
+    // แต่เนื่องจากยังไม่มี server เลยใช้ local storage บน client แก้ขัดไปก่อน
     let stock = [];
     products.forEach((val) => {
         stock.push(getProductQtyObject(val));
