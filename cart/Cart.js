@@ -1,4 +1,5 @@
 import { loadCart, saveCart } from "../storage/localStorageManager.js";
+import { saveItem, loadItem } from "../storage/localStorageManager.js";
 
 export class Cart {
     constructor(items) {
@@ -14,11 +15,24 @@ export class Cart {
         this._items = this._items.filter((val) => val.product.productId != itemId);
     }
     save() {
-        saveCart(this._items);
+        if (cart.length == 0) { return localStorage.removeItem('cart'); }
+        const mapCart = cart.map((val) => {
+            return {
+                'productId': val.product.productId,
+                'qty': val.qty
+            };
+        });
+        saveItem('cart', mapCart)
     }
 
     load() {
-        this._items = loadCart();
+        let loadedCart = loadItem('cart');
+        if (loadedCart == null || loadedCart == undefined || loadedCart == []) return [];
+        let cartItem = [];
+        loadedCart.forEach((val) => {
+            cart.push(new ProductInCart(findProduct(val.productId), val.qty));
+        });
+        this._items = cartItem;
     }
     clear() {
         this._items = [];
